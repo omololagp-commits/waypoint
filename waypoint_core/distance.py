@@ -2,7 +2,7 @@
 
 
 class Distance:
-    """A magnitude with a unit (km or mi)."""
+    """A magnitude with a unit (km or mi). Supports +, -, <, >, ==."""
 
     _KM_TO_MI = 0.621371
     _VALID_UNITS = {"km", "mi"}
@@ -38,11 +38,49 @@ class Distance:
             new_mag = self._magnitude / self._KM_TO_MI
         return Distance(new_mag, to_unit)
 
+    # --- operator overloading ---
+    def _to_common(self, other: "Distance") -> tuple[float, float]:
+        """Normalize both distances to km for arithmetic/comparison."""
+        return self.convert("km").magnitude, other.convert("km").magnitude
+
+    def __add__(self, other: "Distance") -> "Distance":
+        if not isinstance(other, Distance):
+            return NotImplemented
+        a, b = self._to_common(other)
+        return Distance(a + b, "km")
+
+    def __sub__(self, other: "Distance") -> "Distance":
+        if not isinstance(other, Distance):
+            return NotImplemented
+        a, b = self._to_common(other)
+        result = a - b
+        if result < 0:
+            raise ValueError("Subtraction would yield a negative distance")
+        return Distance(result, "km")
+
     def __eq__(self, other: object) -> bool:
         if not isinstance(other, Distance):
             return NotImplemented
-        # Normalize to km for comparison
-        return self.convert("km").magnitude == other.convert("km").magnitude
+        a, b = self._to_common(other)
+        return abs(a - b) < 1e-9
+
+    def __lt__(self, other: "Distance") -> bool:
+        if not isinstance(other, Distance):
+            return NotImplemented
+        a, b = self._to_common(other)
+        return a < b
+
+    def __le__(self, other: "Distance") -> bool:
+        return self == other or self < other
+
+    def __gt__(self, other: "Distance") -> bool:
+        if not isinstance(other, Distance):
+            return NotImplemented
+        a, b = self._to_common(other)
+        return a > b
+
+    def __ge__(self, other: "Distance") -> bool:
+        return self == other or self > other
 
     def __repr__(self) -> str:
         return f"Distance({self._magnitude}, '{self._unit}')"
