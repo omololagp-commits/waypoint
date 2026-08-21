@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <h1>Search Trails</h1>
+    <form method="get" action="{% url 'search' %}">
+        <input type="text" name="q" value="{{ query }}" placeholder="Search...">
+        <button type="submit">Search</button>
+    </form>
+    {% if query %}
+        <p>You searched for: <strong>{{ query }}</strong></p>
+    {% endif %}
+    <p><a href="{% url 'home' %}">← Back home</a></p>
+</body>
+</html>
