@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Report a Trail</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <h1>Trail Report</h1>
+    <form method="post" action="{% url 'report' %}">
+        {% csrf_token %}
+        <p>
+            <label>Name:</label><br>
+            <input type="text" name="name" required>
+        </p>
+        <p>
+            <label>Email:</label><br>
+            <input type="email" name="email" required>
+        </p>
+        <p>
+            <label>Trail:</label><br>
+            <input type="text" name="trail" required>
+        </p>
+        <p>
+            <label>Note:</label><br>
+            <textarea name="note" rows="4" cols="40"></textarea>
+        </p>
+        <button type="submit">Submit Report</button>
+    </form>
+    <p><a href="{% url 'home' %}">← Back home</a></p>
+</body>
+</html>
