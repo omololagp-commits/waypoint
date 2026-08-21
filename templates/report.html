@@ -3,6 +3,15 @@
 {% block title %}Report a Trail{% endblock %}
 
 {% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Report a Trail</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+ main
     <h1>Trail Report</h1>
     <form method="post" action="{% url 'report' %}">
         {% csrf_token %}
@@ -25,3 +34,11 @@
         <button type="submit">Submit Report</button>
     </form>
 {% endblock %}
+
+            <textarea name="note" rows="4" cols="40"></textarea>
+        </p>
+        <button type="submit">Submit Report</button>
+    </form>
+    <p><a href="{% url 'home' %}">← Back home</a></p>
+</body>
+</html>
