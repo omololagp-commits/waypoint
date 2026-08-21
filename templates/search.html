@@ -1,3 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Search Trails{% endblock %}
+
+{% block content %}
+    <h1>Search Trails</h1>
+    <form method="get" action="{% url 'search' %}">
+        <input type="text" name="q" placeholder="Search..." value="{{ query }}">
+        <button type="submit">Search</button>
+    </form>
+    {% if query %}
+        <p>You searched for: {{ query }}</p>
+    {% else %}
+        <p>Enter a search term above.</p>
+    {% endif %}
+{% endblock %}
+
 <!DOCTYPE html>
 <html>
 <head>

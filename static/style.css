@@ -34,4 +34,41 @@ button {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+
+}
+
+/* Week 11 additions */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.85em;
+    text-transform: uppercase;
+}
+
+.badge.hard {
+    background: #c0392b;
+    color: white;
+}
+
+.badge.closed {
+    background: #7f8c8d;
+    color: white;
+}
+
+.badge.open {
+    background: #27ae60;
+    color: white;
+
 }

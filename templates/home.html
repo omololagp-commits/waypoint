@@ -1,3 +1,13 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{{ greeting }}</h1>
+    <p><a href="{% url 'report' %}">Report a trail</a></p>
+    <p><a href="{% url 'search' %}">Search trails</a></p>
+    <p><a href="{% url 'catalog' %}">View catalog</a></p>
+{% endblock %}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,3 +21,4 @@
     <p><a href="{% url 'search' %}">Search trails</a></p>
 </body>
 </html>
+

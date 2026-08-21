@@ -54,7 +54,9 @@ ROOT_URLCONF = 'waypoint_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [BASE_DIR / "templates"],   # <-- THIS LINE IS MISSING OR WRONG
         'DIRS': [BASE_DIR / "templates"],
+ 
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
