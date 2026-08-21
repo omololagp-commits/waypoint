@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Trail Catalog{% endblock %}
+
+{% block content %}
+    <h1>Trail Catalog</h1>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Distance (km)</th>
+                <th>Elevation (m)</th>
+                <th>Difficulty</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for trail in trails %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ trail.name }}</td>
+                <td>{{ trail.distance|floatformat:1 }}</td>
+                <td>{{ trail.elevation }}</td>
+                <td>
+                    {% if trail.difficulty == 'expert' %}
+                        <span class="badge hard">HARD</span>
+                    {% else %}
+                        <span class="badge">{{ trail.difficulty|title }}</span>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if not trail.is_open %}
+                        <span class="badge closed">CLOSED</span>
+                    {% else %}
+                        <span class="badge open">OPEN</span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,72 @@
+body {
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 0 20px;
+    line-height: 1.6;
+}
+
+h1 {
+    color: #2c5530;
+}
+
+a {
+    color: #2c5530;
+}
+
+form {
+    background: #f5f5f5;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    background: #2c5530;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Week 11 additions */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.85em;
+    text-transform: uppercase;
+}
+
+.badge.hard {
+    background: #c0392b;
+    color: white;
+}
+
+.badge.closed {
+    background: #7f8c8d;
+    color: white;
+}
+
+.badge.open {
+    background: #27ae60;
+    color: white;
+}
