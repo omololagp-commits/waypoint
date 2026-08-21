@@ -9,4 +9,5 @@ urlpatterns = [
     path('search/', views.search, name='search'),
     path('catalog/', views.catalog, name='catalog'),
     path('trails/', include('trails.urls')),  # <-- ADD THIS (we'll create trails/urls.py next)
-]
+    path('park/<int:park_id>/', views.park_trails, name='park_trails'),
+]   

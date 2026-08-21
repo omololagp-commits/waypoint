@@ -14,6 +14,7 @@
                 <th>Elevation (m)</th>
                 <th>Difficulty</th>
                 <th>Status</th>
+                <th>Park</th>
             </tr>
         </thead>
         <tbody>
@@ -37,6 +38,7 @@
                         <span class="badge open">OPEN</span>
                     {% endif %}
                 </td>
+                <td>{{ trail.park|default:"—" }}</td>
             </tr>
             {% endfor %}
         </tbody>

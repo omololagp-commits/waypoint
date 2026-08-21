@@ -31,3 +31,8 @@ def search(request):
     """Safe search that reads query string."""
     query = request.GET.get("q", "")
     return render(request, "search.html", {"query": query})
+
+def park_trails(request, park_id):
+    park = Park.objects.get(id=park_id)
+    trails = Trail.objects.filter(park=park, is_open=True).order_by('distance_km')
+    return render(request, 'catalog.html', {'trails': trails})
