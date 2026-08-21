@@ -21,8 +21,8 @@
             <tr>
                 <td>{{ forloop.counter }}</td>
                 <td>{{ trail.name }}</td>
-                <td>{{ trail.distance|floatformat:1 }}</td>
-                <td>{{ trail.elevation }}</td>
+                <td>{{ trail.distance_km|floatformat:1 }}</td>
+                <td>{{ trail.elevation_gain }}</td>
                 <td>
                     {% if trail.difficulty == 'expert' %}
                         <span class="badge hard">HARD</span>

@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from trails.models import Trail
 
 def home(request):
     return render(request, 'home.html', {'greeting': 'Welcome to Waypoint'})
@@ -14,20 +15,8 @@ def search(request):
     return render(request, 'search.html', {'query': query})
 
 def catalog(request):
-    trails = [
-        {'name': 'Eagle Ridge Trail', 'distance': 5.2, 'elevation': 320, 'difficulty': 'moderate', 'is_open': True},
-        {'name': 'Bear Mountain Loop', 'distance': 12.5, 'elevation': 850, 'difficulty': 'expert', 'is_open': True},
-        {'name': 'Crystal Lake Path', 'distance': 3.1, 'elevation': 120, 'difficulty': 'easy', 'is_open': True},
-        {'name': 'Thunder Peak Route', 'distance': 18.3, 'elevation': 1400, 'difficulty': 'expert', 'is_open': False},
-        {'name': 'Willow Creek Walk', 'distance': 2.4, 'elevation': 50, 'difficulty': 'easy', 'is_open': True},
-        {'name': 'Granite Climb', 'distance': 7.8, 'elevation': 600, 'difficulty': 'hard', 'is_open': False},
-    ]
+    trails = Trail.objects.filter(is_open=True).order_by('distance_km')
     return render(request, 'catalog.html', {'trails': trails})
-
-
-def home(request):
-    """Homepage with a greeting."""
-    return render(request, "home.html", {"greeting": "Welcome to Waypoint"})
 
 
 def report(request):
